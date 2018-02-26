@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.Bot;
 
-@Repository
+//@Repository
 public class BotRepositoryDummy implements BotRepository {
 	
 	private List<Bot> botList = new ArrayList<Bot>();

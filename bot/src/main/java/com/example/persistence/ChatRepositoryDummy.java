@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.Chat;
 
-@Repository
+//@Repository
 public class ChatRepositoryDummy implements ChatRepository {
 
 	private List<Chat> chatList = new ArrayList<Chat>();
