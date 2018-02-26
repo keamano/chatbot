@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.Chat;
 
-@Repository
-public class ChatRepositoryPostgres implements ChatRepository {
+//@Repository
+public class ChatRepositoryPostgres implements ChatHistoryRepository {
 
 	private final NamedParameterJdbcTemplate jdbcTemplate;
 	

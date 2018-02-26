@@ -1,8 +1,8 @@
 package com.example.web;
 
-import com.example.entity.Bot;
+import com.example.entity.Question;
 
-public class BotForm {
+public class QuestionForm {
 	
 	private Integer id;
 	
@@ -34,8 +34,8 @@ public class BotForm {
 		this.answer = answer;
 	}
 	
-    public Bot convertToEntity() {
-        return new Bot(id, question, answer);
+    public Question convertToEntity() {
+        return new Question(id, question, answer);
     }
 
 }

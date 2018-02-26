@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.entity.Bot;
-import com.example.service.BotService;
+import com.example.entity.Question;
+import com.example.service.QuestionAdminService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/bot")
-public class BotController {
+@RequestMapping("/questionAdmin")
+public class QuestionAdminController {
 
-	private final BotService botService;
+	private final QuestionAdminService questionAdminService;
 
 	// EmployeeServiceをDIする（@Autowiredは省略）
-	public BotController(BotService botService) {
-		this.botService = botService;
+	public QuestionAdminController(QuestionAdminService questionAdminService) {
+		this.questionAdminService = questionAdminService;
 	}
 
 	/**
@@ -29,20 +28,9 @@ public class BotController {
 	 */
 	@GetMapping("/index")
 	public String index(Model model) {
-		List<Bot> botList = botService.findAll();
-		
-		List<BotForm> botFormList = new ArrayList<BotForm>();
-		for (Bot bot : botList) {
-			BotForm botForm = new BotForm();
-			botForm.setId(bot.getId());
-			botForm.setQuestion(bot.getQuestion());
-			botForm.setAnswer(bot.getAnswer());
-			botFormList.add(botForm);
-		}
-		
-		model.addAttribute("botList", botFormList);
-		
-		return "bot/index";
+		List<Question> questionList = questionAdminService.findAll();
+		model.addAttribute("questionList", questionList);
+		return "questionAdmin/index";
 	}
 	
 	/**
@@ -50,30 +38,30 @@ public class BotController {
 	 */
 	@GetMapping("/edit")
 	public String edit(@RequestParam(name = "id", required = false) Integer id, Model model) {
-		Bot bot;
+		Question question;
 		if (id == null) {
-			bot = new Bot("", "");
+			question = new Question("", "");
 		} else {
-			bot = botService.findById(id);
+			question = questionAdminService.findById(id);
 		}
 	
-		BotForm botForm = new BotForm();
-		botForm.setId(bot.getId());
-		botForm.setQuestion(bot.getQuestion());
-		botForm.setAnswer(bot.getAnswer());
-		model.addAttribute("bot", bot);
+		QuestionForm questionForm = new QuestionForm();
+		questionForm.setId(question.getId());
+		questionForm.setQuestion(question.getQuestion());
+		questionForm.setAnswer(question.getAnswer());
+		model.addAttribute("question", question);
 		
-		return "bot/edit";
+		return "questionAdmin/edit";
 	}
 
 	/**
 	 * 入力を受け取り、新規登録処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
 	 */
 	@PostMapping(value = "/complete", params = "insert")
-	public String insertCmplete(BotForm botForm) {
-		Bot bot = botForm.convertToEntity();
+	public String insertCmplete(QuestionForm questionForm) {
+		Question question = questionForm.convertToEntity();
 
-		botService.insert(bot);
+		questionAdminService.insert(question);
 
 		return "redirect:index";
 	}
@@ -82,10 +70,10 @@ public class BotController {
 	 * 入力を受け取り、更新処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
 	 */
 	@PostMapping(value = "/complete", params = "update")
-	public String updateCmplete(BotForm botForm) {
-		Bot bot = botForm.convertToEntity();
+	public String updateCmplete(QuestionForm questionForm) {
+		Question question = questionForm.convertToEntity();
 
-		botService.update(bot);
+		questionAdminService.update(question);
 
 		return "redirect:index";
 	}
@@ -94,10 +82,10 @@ public class BotController {
 	 * 入力を受け取り、削除処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
 	 */
 	@PostMapping(value = "/complete", params = "delete")
-	public String deleteCmplete(BotForm botForm) {
-		Bot bot = botForm.convertToEntity();
+	public String deleteCmplete(QuestionForm questionForm) {
+		Question question = questionForm.convertToEntity();
 
-		botService.delete(bot);
+		questionAdminService.delete(question);
 
 		return "redirect:index";
 	}

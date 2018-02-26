@@ -6,24 +6,24 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.entity.Bot;
+import com.example.entity.Question;
 
-@Repository
-public class BotRepositoryPostgres implements BotRepository {
+//@Repository
+public class QuestionRepositoryPostgres implements QuestionRepository {
 	
 	private final NamedParameterJdbcTemplate jdbcTemplate;
 	
-    public BotRepositoryPostgres(NamedParameterJdbcTemplate jdbcTemplate) {
+    public QuestionRepositoryPostgres(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
 	@Override
-	public List<Bot> findAll() {
+	public List<Question> findAll() {
         String sql = "SELECT id, question, answer" +
                 " FROM bot" +
                 " ORDER BY id";
-        List<Bot> botList = jdbcTemplate.query(sql,
-                (rs, rowNum) -> new Bot(rs.getInt("id"),
+        List<Question> botList = jdbcTemplate.query(sql,
+                (rs, rowNum) -> new Question(rs.getInt("id"),
                         rs.getString("question"),
                         rs.getString("answer"))
                 );
@@ -31,12 +31,12 @@ public class BotRepositoryPostgres implements BotRepository {
 	}
 	
 	@Override
-	public Bot findById(Integer id) {
+	public Question findById(Integer id) {
         String sql = "SELECT id, question, answer" +
                 " FROM bot" +
                 " WHERE id = " + String.valueOf(id);
-        List<Bot> botList = jdbcTemplate.query(sql,
-                (rs, rowNum) -> new Bot(rs.getInt("id"),
+        List<Question> botList = jdbcTemplate.query(sql,
+                (rs, rowNum) -> new Question(rs.getInt("id"),
                         rs.getString("question"),
                         rs.getString("answer"))
                 );
@@ -47,14 +47,14 @@ public class BotRepositoryPostgres implements BotRepository {
 	}
 
 	@Override
-	public Bot findByQuestion(String question) {
+	public Question findByQuestion(String question) {
         String sql = "SELECT id, question, answer" +
                 " FROM bot" +
                 " WHERE question LIKE '%" + question + "%'" +
                 " ORDER BY id" +
                 " LIMIT 1";
-        List<Bot> botList = jdbcTemplate.query(sql,
-                (rs, rowNum) -> new Bot(rs.getInt("id"),
+        List<Question> botList = jdbcTemplate.query(sql,
+                (rs, rowNum) -> new Question(rs.getInt("id"),
                         rs.getString("question"),
                         rs.getString("answer"))
                 );
@@ -65,7 +65,7 @@ public class BotRepositoryPostgres implements BotRepository {
 	}
 
 	@Override
-	public int insert(Bot bot) {
+	public int insert(Question bot) {
         String sql = "INSERT INTO bot(question, answer)" +
                 " VALUES(:question, :answer)";
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
@@ -76,7 +76,7 @@ public class BotRepositoryPostgres implements BotRepository {
 	}
 
 	@Override
-	public int update(Bot bot) {
+	public int update(Question bot) {
         String sql = "UPDATE bot" +
         		" SET question = :question, answer = :answer" +
         		" WHERE id = :id";
@@ -89,7 +89,7 @@ public class BotRepositoryPostgres implements BotRepository {
 	}
 
 	@Override
-	public int delete(Bot bot) {
+	public int delete(Question bot) {
         String sql = "DELETE FROM bot" +
         		" WHERE id = :id";
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();

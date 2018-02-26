@@ -1,19 +1,19 @@
 package com.example.entity;
 
-public class Bot {
+public class Question {
 	private Integer id;
 	private String question;
 	private String answer;
 
-	public Bot() {
+	public Question() {
 	}
 
-	public Bot(String question, String answer) {
+	public Question(String question, String answer) {
 		this.setQuestion(question);
 		this.setAnswer(answer);
 	}
 
-	public Bot(Integer id, String question, String answer) {
+	public Question(Integer id, String question, String answer) {
 		this.id = id;
 		this.setQuestion(question);
 		this.setAnswer(answer);

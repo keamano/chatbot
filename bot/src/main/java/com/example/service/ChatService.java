@@ -6,8 +6,9 @@ import com.example.entity.Chat;
 
 public interface ChatService {
 
-    List<Chat> findAll();
+    List<Chat> findAllHistory();
 
     void insert(Chat chat);
     
+    Chat findByQuestion(String question);
 }

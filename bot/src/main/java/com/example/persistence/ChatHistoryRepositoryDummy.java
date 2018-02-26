@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.Chat;
 
-//@Repository
-public class ChatRepositoryDummy implements ChatRepository {
+@Repository
+public class ChatHistoryRepositoryDummy implements ChatHistoryRepository {
 
 	private List<Chat> chatList = new ArrayList<Chat>();
 	
-	ChatRepositoryDummy() {
+	ChatHistoryRepositoryDummy() {
 		chatList.add(new Chat(1, "誰ですか", "ボットです"));
 		chatList.add(new Chat(2, "天気", "快晴です"));
 		chatList.add(new Chat(3, "こんにちは", "こんにちは"));

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.entity.Chat;
 
-public interface ChatRepository {
+public interface ChatHistoryRepository {
 	
     List<Chat> findAll();
 
