@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ボット管理</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
+</head>
+<body>
+	<h1>ボット管理</h1>
+
+	<!-- ナビゲーション -->
+	<a href="/chat/index.html" th:href="@{/chat/index}">チャットへ</a>
+
+	<!-- 質問と回答のリストリスト -->
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>質問</th>
+			<th>回答</th>
+			<th>修正</th>
+		</tr>
+		<tr th:each="bot : ${botList}" th:object="${bot}">
+			<td th:text="*{id}"></td>
+			<td th:text="*{question}"></td>
+			<td th:text="*{answer}"></td>
+			<td><a href="edit.html" th:href="@{edit}">修正</a></td>
+		</tr>
+	</table>
+	<a href="edit.html" th:href="@{edit}">新規</a>
+	
+</body>
+</html>

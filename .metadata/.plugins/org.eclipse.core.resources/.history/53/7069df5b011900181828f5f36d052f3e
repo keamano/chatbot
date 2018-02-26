@@ -1,0 +1,13 @@
+package com.example.persistence;
+
+import com.example.domain.Chat;
+
+import java.util.List;
+
+public interface ChatRepository {
+
+    List<Chat> findAll();
+
+    int insert(Chat bot);
+    
+}

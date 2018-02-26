@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ボット修正</title>
+    <link rel="stylesheet" href="../../../resources/css/style.css"
+          th:href="@{/resources/css/style.css}">
+</head>
+<body>
+<h1>新規追加</h1>
+<a href="index.html" th:href="@{index}">社員一覧へ</a>
+<form method="post" action="index.html" th:action="@{insertComplete}">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <td>(自動採番されます)</td>
+        </tr>
+        <tr>
+            <th>氏名</th>
+            <td>
+                <input type="text" name="name">
+            </td>
+        </tr>
+        <tr>
+            <th>入社年月日</th>
+            <td>
+                <input type="text" name="joinedDate">
+            </td>
+        </tr>
+        <tr>
+            <th>部署ID</th>
+            <td>
+                <input type="text" name="departmentId">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="登録">
+</form>
+</body>
+</html>

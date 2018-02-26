@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>チャット</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
+</head>
+<body>
+	<!-- ナビゲーション -->
+	<h1>チャット</h1>
+	<a href="../bot/index.html" th:href="@{../bot/index}">ボット管理へ</a>
+	
+	<!-- チャットのリスト -->
+	<div th:each="chat : ${chatList}" th:object="${chat}">
+		<p th:text="*{question}">質問</p>
+		<p th:text="*{question}">回答</p>
+	</div>
+	<!--/*-->
+	<div>
+		<p th:text="*{question}">質問A</p>
+		<p th:text="*{question}">回答A</p>
+	</div>
+	<div>
+		<p th:text="*{question}">質問B</p>
+		<p th:text="*{question}">回答B</p>
+	</div>
+	<!--*/-->
+	
+	<!-- 質問の送信 -->
+	<form method="post" action="index.html" th:action="@{insertComplete}">
+		<input type="text" id="question" name="question" value="" placeholder="質問を入力してください。">
+		<input type="submit" value="送信">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ボット修正</title>
+    <link rel="stylesheet" href="../../../resources/css/style.css"
+          th:href="@{/resources/css/style.css}">
+</head>
+<body>
+
+	<h1>ボット修正</h1>
+
+	<!-- ナビゲーション -->
+	<a href="index.html" th:href="@{index}">ボット管理へ</a>
+
+	<!-- 質問と回答 -->
+	<form method="post" action="index.html" th:action="@{complete}" th:object="${bot}">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>質問</th>
+				<th>回答</th>
+			</tr>
+			<tr>
+				<td th:text="*{id}"></td>
+				<td th:text="*{question}"></td>
+				<td th:text="*{answer}"></td>
+			</tr>
+		</table>
+	</form>
+	
+	<a href="edit.html" th:href="@{edit}">新規</a>
+	
+</body>
+</html>

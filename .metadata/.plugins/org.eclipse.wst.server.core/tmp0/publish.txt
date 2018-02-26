@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Mon Feb 26 16:49:40 JST 2018
+org.eclipse.jst.jee.server\:bot=/Applications/pivotal-tc-server-developer-3.2.8.RELEASE/base-instance/wtpwebapps/bot
+org.eclipse.jst.jee.server\:/binary\:/Users/kenji.amano/.m2/repository/org/springframework/spring-web/5.0.2.RELEASE/spring-web-5.0.2.RELEASE.jar=/Applications/pivotal-tc-server-developer-3.2.8.RELEASE/base-instance/wtpwebapps/bot/WEB-INF/lib/spring-web-5.0.2.RELEASE.jar

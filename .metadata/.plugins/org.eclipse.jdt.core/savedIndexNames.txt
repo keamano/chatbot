@@ -1,0 +1,21 @@
+INDEX VERSION 1.130+/Users/kenji.amano/Documents/sts/bot/.metadata/.plugins/org.eclipse.jdt.core
+3267869906.index
+1815830856.index
+1853220810.index
+3039820685.index
+1828089775.index
+659275127.index
+2053260378.index
+568073088.index
+626781439.index
+2328484599.index
+3397211160.index
+371579569.index
+199433978.index
+4023158879.index
+4172570413.index
+1381533939.index
+2077414593.index
+2414011726.index
+491581223.index
+1495795250.index

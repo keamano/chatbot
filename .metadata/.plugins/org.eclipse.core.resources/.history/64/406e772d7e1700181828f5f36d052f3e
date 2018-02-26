@@ -1,0 +1,12 @@
+package com.example.persistence.repository;
+
+import com.example.persistence.entity.Employee;
+
+import java.util.List;
+
+public interface EmployeeRepository {
+
+    List<Employee> findAll();
+
+    int insert(Employee employee);
+}

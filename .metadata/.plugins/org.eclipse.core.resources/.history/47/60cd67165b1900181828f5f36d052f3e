@@ -1,0 +1,33 @@
+package com.example.persistence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.entity.Chat;
+
+@Repository
+public class ChatRepositoryDummy implements ChatRepository {
+
+	private List<Chat> chatList = new ArrayList<Chat>();
+	
+	ChatRepository() {
+		chatList.add(new Chat(1, "誰ですか", "ボットです"));
+		chatList.add(new Chat(2, "天気", "快晴です"));
+		chatList.add(new Chat(3, "こんにちは", "こんにちは"));
+	}
+	
+	@Override
+	public List<Chat> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insert(Chat bot) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,41 @@
+package com.example.web;
+
+import com.example.entity.Chat;
+
+public class ChatForm {
+
+    private String question;
+    
+    private String answer;
+    
+    private Boolean insert;
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+    public Chat convertToEntity() {
+        return new Chat(question, answer);
+    }
+
+	public Boolean getInsert() {
+		return insert;
+	}
+
+	public void setInsert(Boolean insert) {
+		this.insert = insert;
+	}
+
+}

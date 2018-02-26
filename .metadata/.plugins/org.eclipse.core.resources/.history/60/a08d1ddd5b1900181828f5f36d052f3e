@@ -1,0 +1,26 @@
+package com.example.service;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.entity.Chat;
+
+public class ChatServiceImpl implements ChatService {
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public List<Chat> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public void insert(Chat bot) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

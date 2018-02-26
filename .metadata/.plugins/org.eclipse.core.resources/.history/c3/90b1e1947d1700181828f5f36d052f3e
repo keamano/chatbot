@@ -1,0 +1,65 @@
+package com.example.domain;
+
+import java.time.LocalDate;
+
+public class Bot {
+    private Integer id;
+    private String question;
+    private String answer;
+
+    public Bot() {}
+
+    public Bot(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
+    }
+
+    public Bot(Integer id, String name, LocalDate joinedDate,
+                    Integer departmentId, String departmentName) {
+        this.id = id;
+        this.name = name;
+        this.joinedDate = joinedDate;
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(LocalDate joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+}

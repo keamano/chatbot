@@ -1,0 +1,47 @@
+package com.example.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.entity.Bot;
+import com.example.service.BotService;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/bot")
+public class BotController {
+    
+    private final BotService botService;
+
+    // EmployeeServiceをDIする（@Autowiredは省略）
+    public BotController(BotService botService) {
+        this.botService = botService;
+    }
+
+    /**
+     * 一覧画面に遷移する。
+     */
+    @GetMapping("/index")
+    public String index(Model model) {
+        List<Bot> botList = botService.findAll();
+        model.addAttribute("chatList", botList);
+        return "bot/index";
+    }
+
+    /**
+     * 入力を受け取り、追加を実行する。
+     * 追加処理完了後は、一覧画面にリダイレクトする。
+     */
+    @PostMapping("/insertComplete")
+    public String insertComplete(BotForm botForm) {
+        Bot chat = botForm.convertToEntity();
+        Bot bot = botService.findByQuestion(chat.getQuestion());
+        chat.setAnswer(bot.getAnswer());
+        chatService.insert(chat);
+        return "redirect:index";
+    }
+}

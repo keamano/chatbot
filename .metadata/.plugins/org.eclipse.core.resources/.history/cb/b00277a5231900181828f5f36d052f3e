@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>チャット</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
+</head>
+<body>
+	<!-- ナビゲーション -->
+	<h1>チャット</h1>
+	<a href="../bot/insertMain.html" th:href="@{../bot/insertMain}">ボット管理へ</a>
+	
+	<!-- チャットのリスト -->
+	<div th:each="chat : ${chatList}" th:object="${chat}">
+		<p th:text="*{question}">質問</p>
+		<p th:text="*{question}">回答</p>
+	</div>
+	<!--/*-->
+	<div>
+		<p th:text="*{question}">質問A</p>
+		<p th:text="*{question}">回答A</p>
+	</div>
+	<div>
+		<p th:text="*{question}">質問B</p>
+		<p th:text="*{question}">回答B</p>
+	</div>
+	<!--*/-->
+	
+	<!-- 質問の送信 -->
+	<form method="post" action="index.html" th:action="@{insertComplete}">
+		<label for="question">質問</label>
+		<input type="input">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <td>(自動採番されます)</td>
+        </tr>
+        <tr>
+            <th>氏名</th>
+            <td>
+                <input type="text" name="name">
+            </td>
+        </tr>
+        <tr>
+            <th>入社年月日</th>
+            <td>
+                <input type="text" name="joinedDate">
+            </td>
+        </tr>
+        <tr>
+            <th>部署ID</th>
+            <td>
+                <input type="text" name="departmentId">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="登録">
+</form>
+</body>
+</html>

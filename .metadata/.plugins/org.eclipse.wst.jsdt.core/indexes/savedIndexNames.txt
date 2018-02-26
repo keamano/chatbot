@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/Users/kenji.amano/Documents/sts/bot/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+63874147.index
+3752601667.index
+3494481897.index
+1833655001.index
+1500457150.index
+2798005010.index
+659275127.index
+95254188.index

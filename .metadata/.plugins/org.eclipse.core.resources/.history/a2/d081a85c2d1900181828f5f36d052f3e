@@ -1,0 +1,37 @@
+package com.example.web;
+
+import com.example.entity.Bot;
+
+public class BotForm {
+	
+	private String question;
+    
+    private String answer;
+    
+    private Boolean update;
+    
+    private Boolean delete;
+    
+    private Boolean insert;
+    
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+    public Bot convertToEntity() {
+        return new Bot(question, answer);
+    }
+
+}

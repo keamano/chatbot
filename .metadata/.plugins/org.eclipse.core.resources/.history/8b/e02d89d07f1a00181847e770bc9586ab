@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ボット登録</title>
+    <link rel="stylesheet" href="../../../resources/css/style.css"
+          th:href="@{/resources/css/style.css}">
+</head>
+<body>
+
+	<h1 th:unless="${bot.id}">ボット作成</h1>
+	<h1 th:if="${bot.id}">ボット更新</h1>
+
+	<!-- ナビゲーション -->
+	<a href="index.html" th:href="@{index}">ボット管理へ</a>
+
+	<!-- 質問と回答 -->
+	<form method="post" action="index.html" th:action="@{complete}" th:object="${bot}">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>質問</th>
+				<th>回答</th>
+			</tr>
+			<tr> 
+				<td th:if="*{id}" th:text="*{id}"></td>
+				<td><input type="text" th:field="*{question}" /></td>
+				<td><input type="text" th:field="*{answer}" /></td>
+			</tr>
+		</table>
+		<input th:if="*{id}" type="hidden" th:field="*{id}" />
+		
+		<input th:if="*{id}" type="submit" name="update" value="登録">
+		<input th:if="*{id}" type="submit" name="delete" value="削除">
+		
+		<input th:unless="*{id}" type="submit" name="update" value="登録">
+	</form>
+	
+</body>
+</html>

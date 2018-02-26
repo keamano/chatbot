@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ボット管理</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
+</head>
+<body>
+	<h1>ボット管理</h1>
+
+	<!-- ナビゲーション -->
+	<a href="../chat/index.html" th:href="@{../chat/index}">チャットへ</a>
+
+	<!-- 質問と回答のリストリスト -->
+	<form th:each="bot : ${botList}" th:object="${bot}" method="post" action="index.html" th:action="@{complete}">
+		<input type="hidden" name="id" value="*{id}">
+		<label for="question">質問</label>
+		<input type="text" id="question" name="question" value="*{question}" placeholder="質問を入力してください。">
+		<label for="answer">回答</label>
+		<input type="text" id="answer" name="answer" value="*{answer}" placeholder="回答を入力してください。">
+		<input type="submit" name="update" value="更新">
+		<input type="submit" name="delete" value="削除">
+	</form>
+	<!--/*-->
+	<form method="post" action="index.html">
+		<input type="hidden" name="id" value="1">
+		<label for="question">質問</label>
+		<input type="text" id="question" name="question" value="質問A" placeholder="質問を入力してください。">
+		<label for="answer">回答</label>
+		<input type="text" id="answer" name="answer" value="回答A" placeholder="回答を入力してください。">
+		<input type="submit" name="update" value="更新"> <input type="submit" name="delete"
+			value="削除">
+	</form>
+	<form method="post" action="index.html">
+		<input type="hidden" name="id" value="2"> <label
+			for="question">質問</label> <input type="text" id="question"
+			name="question" value="質問B" placeholder="質問を入力してください。"> <label
+			for="answer">回答</label> <input type="text" id="answer" name="answer"
+			value="回答B" placeholder="回答を入力してください。"> <input type="submit"
+			name="update" value="更新"> <input type="submit" name="delete"
+			value="削除">
+	</form>
+	<!--*/-->
+
+	<!-- 新規登録 -->
+	<form method="post" action="index.html" th:action="@{complete}">
+		<label for="question">質問</label>
+		<input type="text" id="question" name="question" value="" placeholder="質問を入力してください。">
+		<label for="answer">回答</label>
+		<input type="text" id="answer" name="answer" value="" placeholder="回答を入力してください。">
+		<input type="submit" name="inset" value="新規登録">
+	</form>
+
+</body>
+</html>
