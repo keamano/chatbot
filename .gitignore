@@ -14,7 +14,7 @@ derby.log
 spring-test/test-output/
 .gradle
 argfile*
-pom.xml
+#pom.xml
 activemq-data/
 
 classes/
@@ -25,7 +25,7 @@ buildSrc/build
 target/
 
 # Eclipse artifacts, including WTP generated manifests
-.classpath
+#.classpath
 .project
 spring-*/src/main/java/META-INF/MANIFEST.MF
 
