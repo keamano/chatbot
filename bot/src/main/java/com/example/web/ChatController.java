@@ -1,22 +1,22 @@
 package com.example.web;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.entity.Chat;
+import com.example.entity.ChatHistory;
 import com.example.service.ChatService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/chat")
 public class ChatController {
 
     private final ChatService chatService;
-    
+
     // EmployeeServiceをDIする（@Autowiredは省略）
     public ChatController(ChatService chatService) {
         this.chatService = chatService;
@@ -27,7 +27,7 @@ public class ChatController {
      */
     @GetMapping("/index")
     public String index(Model model) {
-        List<Chat> chatHistoryList = chatService.findAllHistory();
+        List<ChatHistory> chatHistoryList = chatService.findAllHistory();
         model.addAttribute("chatHistoryList", chatHistoryList);
         return "chat/index";
     }
@@ -38,9 +38,7 @@ public class ChatController {
      */
     @PostMapping("/ask")
     public String ask(ChatForm chatForm) {
-        Chat chatQuestion = chatForm.convertToEntity();
-		Chat chatAnswer = chatService.findByQuestion(chatQuestion.getQuestion());
-		chatService.insert(chatAnswer);  
+        chatService.ask(chatForm.getQuestion());
 
         return "redirect:index";
     }

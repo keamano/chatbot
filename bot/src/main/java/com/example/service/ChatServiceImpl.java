@@ -6,45 +6,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.entity.Question;
-import com.example.entity.Chat;
-import com.example.persistence.QuestionRepository;
+import com.example.entity.ChatHistory;
+import com.example.entity.QuestionAndAnswer;
 import com.example.persistence.ChatHistoryRepository;
+import com.example.persistence.QuestionAndAnswerRepository;
 
 @Service
 public class ChatServiceImpl implements ChatService {
-	
-	private final ChatHistoryRepository chatHistoryRepository;
-	
-	private final QuestionRepository botRepository;
 
-	public ChatServiceImpl(ChatHistoryRepository chatHistoryRepository, QuestionRepository botRepository) {
-		this.chatHistoryRepository = chatHistoryRepository;
-		this.botRepository = botRepository;
-	}
-	
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public List<Chat> findAllHistory() {
-		return chatHistoryRepository.findAll();
-	}
+    private final ChatHistoryRepository chatHistoryRepository;
 
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void insert(Chat chat) {
-		chatHistoryRepository.insert(chat);
-	}
+    private final QuestionAndAnswerRepository questionAndAnswerRepository;
 
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public Chat findByQuestion(String question) {
-		Question bot = botRepository.findByQuestion(question);
-		
-		String answer = "わかりません。";
-		if (bot != null) {
-			answer = bot.getAnswer();
-		}
-		
-		return new Chat(question, answer);
-	}
+    public ChatServiceImpl(ChatHistoryRepository chatHistoryRepository, QuestionAndAnswerRepository questionAndAnswerRepository) {
+        this.chatHistoryRepository = chatHistoryRepository;
+        this.questionAndAnswerRepository = questionAndAnswerRepository;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List<ChatHistory> findAllHistory() {
+        return chatHistoryRepository.findAll();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public void ask(String question) {
+        QuestionAndAnswer questionAndAnswer = questionAndAnswerRepository.findByQuestion(question);
+
+        String answer = "わかりません。";
+        if (questionAndAnswer != null) {
+            answer = questionAndAnswer.getAnswer();
+        }
+
+        ChatHistory chatHistory = new ChatHistory(question, answer);
+        chatHistoryRepository.insert(chatHistory);
+    }
 }

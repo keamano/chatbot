@@ -10,10 +10,10 @@
 	<h1>チャット</h1>
 	
 	<!-- ナビゲーション -->
-	<a href="../questionAdmin/index.html" th:href="@{/questionAdmin/index}">Q&A管理へ</a>
+	<a href="../chatBotAdmin/index.html" th:href="@{/chatBotAdmin/index}">チャットボット管理へ</a>
 	
 	<!-- チャットのリスト -->
-	<div th:each="chat : ${chatHistoryList}" th:object="${chat}">
+	<div th:each="chatHistory : ${chatHistoryList}" th:object="${chatHistory}">
 		<p th:text="*{question}">質問</p>
 		<p th:text="*{answer}">回答</p>
 		<hr>

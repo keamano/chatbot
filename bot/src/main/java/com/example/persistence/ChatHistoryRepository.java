@@ -2,12 +2,12 @@ package com.example.persistence;
 
 import java.util.List;
 
-import com.example.entity.Chat;
+import com.example.entity.ChatHistory;
 
 public interface ChatHistoryRepository {
-	
-    List<Chat> findAll();
 
-    int insert(Chat chat);
-    
+    List<ChatHistory> findAll();
+
+    int insert(ChatHistory chat);
+
 }

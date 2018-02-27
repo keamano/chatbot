@@ -1,12 +1,22 @@
 package com.example.web;
 
-import com.example.entity.ChatHistory;
+import com.example.entity.QuestionAndAnswer;
 
-public class ChatForm {
+public class QuestionAndAnswerForm {
+
+    private Integer id;
 
     private String question;
 
     private String answer;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getQuestion() {
         return question;
@@ -16,16 +26,16 @@ public class ChatForm {
         this.question = question;
     }
 
-    public ChatHistory convertToEntity() {
-        return new ChatHistory(question, "");
-    }
-
     public String getAnswer() {
         return answer;
     }
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public QuestionAndAnswer convertToEntity() {
+        return new QuestionAndAnswer(id, question, answer);
     }
 
 }

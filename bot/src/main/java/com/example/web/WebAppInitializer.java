@@ -1,13 +1,14 @@
 package com.example.web;
 
+import java.nio.charset.StandardCharsets;
+
+import javax.servlet.Filter;
+
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.example.persistence.PersistenceConfig;
 import com.example.service.ServiceConfig;
-
-import javax.servlet.Filter;
-import java.nio.charset.StandardCharsets;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
