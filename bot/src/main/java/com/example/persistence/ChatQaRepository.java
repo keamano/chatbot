@@ -8,6 +8,6 @@ public interface ChatQaRepository {
 
     List<ChatQa> findAll();
 
-    int insert(ChatQa chat);
+    int insert(ChatQa chatQa);
 
 }

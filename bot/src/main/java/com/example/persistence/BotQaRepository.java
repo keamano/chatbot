@@ -12,10 +12,10 @@ public interface BotQaRepository {
 
     BotQa findByQuestion(String question);
 
-    int insert(BotQa questionAndAnswer);
+    int insert(BotQa botQa);
 
-    int update(BotQa questionAndAnswer);
+    int update(BotQa botQa);
 
-    int delete(BotQa questionAndAnswer);
+    int delete(BotQa botQa);
 
 }
