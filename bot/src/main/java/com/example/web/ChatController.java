@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.entity.ChatHistory;
+import com.example.entity.ChatQa;
+import com.example.form.ChatForm;
 import com.example.service.ChatService;
 
 @Controller
@@ -17,7 +18,7 @@ public class ChatController {
 
     private final ChatService chatService;
 
-    // EmployeeServiceをDIする（@Autowiredは省略）
+    // ServiceをDIする（@Autowiredは省略）
     public ChatController(ChatService chatService) {
         this.chatService = chatService;
     }
@@ -27,8 +28,8 @@ public class ChatController {
      */
     @GetMapping("/index")
     public String index(Model model) {
-        List<ChatHistory> chatHistoryList = chatService.findAllHistory();
-        model.addAttribute("chatHistoryList", chatHistoryList);
+        List<ChatQa> chatQaList = chatService.findAll();
+        model.addAttribute("chatQaList", chatQaList);
         return "chat/index";
     }
 

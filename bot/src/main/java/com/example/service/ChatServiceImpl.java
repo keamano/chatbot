@@ -6,40 +6,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.entity.ChatHistory;
-import com.example.entity.QuestionAndAnswer;
-import com.example.persistence.ChatHistoryRepository;
-import com.example.persistence.QuestionAndAnswerRepository;
+import com.example.entity.BotQa;
+import com.example.entity.ChatQa;
+import com.example.persistence.BotQaRepository;
+import com.example.persistence.ChatQaRepository;
 
 @Service
 public class ChatServiceImpl implements ChatService {
 
-    private final ChatHistoryRepository chatHistoryRepository;
+    private final ChatQaRepository chatQaRepository;
 
-    private final QuestionAndAnswerRepository questionAndAnswerRepository;
+    private final BotQaRepository botQaRepository;
 
-    public ChatServiceImpl(ChatHistoryRepository chatHistoryRepository, QuestionAndAnswerRepository questionAndAnswerRepository) {
-        this.chatHistoryRepository = chatHistoryRepository;
-        this.questionAndAnswerRepository = questionAndAnswerRepository;
+    public ChatServiceImpl(ChatQaRepository chatQaRepository, BotQaRepository botQaRepository) {
+        this.chatQaRepository = chatQaRepository;
+        this.botQaRepository = botQaRepository;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public List<ChatHistory> findAllHistory() {
-        return chatHistoryRepository.findAll();
+    public List<ChatQa> findAll() {
+        return chatQaRepository.findAll();
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public void ask(String question) {
-        QuestionAndAnswer questionAndAnswer = questionAndAnswerRepository.findByQuestion(question);
+        BotQa botQa = botQaRepository.findByQuestion(question);
 
         String answer = "わかりません。";
-        if (questionAndAnswer != null) {
-            answer = questionAndAnswer.getAnswer();
+        if (botQa != null) {
+            answer = botQa.getAnswer();
         }
+        ChatQa chatQa = new ChatQa(question, answer);
 
-        ChatHistory chatHistory = new ChatHistory(question, answer);
-        chatHistoryRepository.insert(chatHistory);
+        chatQaRepository.insert(chatQa);
     }
 }

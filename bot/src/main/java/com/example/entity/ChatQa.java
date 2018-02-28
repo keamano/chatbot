@@ -1,14 +1,23 @@
-package com.example.web;
+package com.example.entity;
 
-import com.example.entity.QuestionAndAnswer;
-
-public class QuestionAndAnswerForm {
-
+public class ChatQa {
     private Integer id;
-
     private String question;
-
     private String answer;
+
+    public ChatQa() {
+    }
+
+    public ChatQa(String question, String answer) {
+        this.setQuestion(question);
+        this.setAnswer(answer);
+    }
+
+    public ChatQa(Integer id, String question, String answer) {
+        this.id = id;
+        this.setQuestion(question);
+        this.setAnswer(answer);
+    }
 
     public Integer getId() {
         return id;
@@ -33,9 +42,4 @@ public class QuestionAndAnswerForm {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-
-    public QuestionAndAnswer convertToEntity() {
-        return new QuestionAndAnswer(id, question, answer);
-    }
-
 }

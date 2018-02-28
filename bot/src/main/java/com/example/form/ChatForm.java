@@ -1,6 +1,6 @@
-package com.example.web;
+package com.example.form;
 
-import com.example.entity.ChatHistory;
+import com.example.entity.ChatQa;
 
 public class ChatForm {
 
@@ -16,8 +16,8 @@ public class ChatForm {
         this.question = question;
     }
 
-    public ChatHistory convertToEntity() {
-        return new ChatHistory(question, "");
+    public ChatQa convertToEntity() {
+        return new ChatQa(question, "");
     }
 
     public String getAnswer() {

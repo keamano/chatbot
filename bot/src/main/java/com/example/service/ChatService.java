@@ -2,11 +2,11 @@ package com.example.service;
 
 import java.util.List;
 
-import com.example.entity.ChatHistory;
+import com.example.entity.ChatQa;
 
 public interface ChatService {
 
-    List<ChatHistory> findAllHistory();
+    List<ChatQa> findAll();
 
     void ask(String question);
 }

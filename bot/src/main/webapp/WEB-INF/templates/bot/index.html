@@ -20,7 +20,7 @@
             <th>回答</th>
             <th>修正</th>
         </tr>
-        <tr th:each="questionAdnAnswer : ${questionAndAnswerList}" th:object="${questionAdnAnswer}">
+        <tr th:each="botQa : ${botQaList}" th:object="${botQa}">
             <td th:text="*{id}"></td>
             <td th:text="*{question}"></td>
             <td th:text="*{answer}"></td>

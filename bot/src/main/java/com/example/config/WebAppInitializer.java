@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.config;
 
 import java.nio.charset.StandardCharsets;
 
@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.example.persistence.PersistenceConfig;
 import com.example.service.ServiceConfig;
+import com.example.web.MvcConfig;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override

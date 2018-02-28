@@ -1,19 +1,19 @@
 package com.example.entity;
 
-public class ChatHistory {
+public class BotQa {
     private Integer id;
     private String question;
     private String answer;
 
-    public ChatHistory() {
+    public BotQa() {
     }
 
-    public ChatHistory(String question, String answer) {
+    public BotQa(String question, String answer) {
         this.setQuestion(question);
         this.setAnswer(answer);
     }
 
-    public ChatHistory(Integer id, String question, String answer) {
+    public BotQa(Integer id, String question, String answer) {
         this.id = id;
         this.setQuestion(question);
         this.setAnswer(answer);
