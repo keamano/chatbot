@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    	<title th:unless="${bot.id}">ボット新規登録</title>
-	<title th:if="${bot.id}">ボット更新</title>
-    <link rel="stylesheet" href="../../../resources/css/style.css"
-          th:href="@{/resources/css/style.css}">
+<meta charset="UTF-8">
+<title th:unless="${botQa.id}">ボット新規登録</title>
+<title th:if="${botQa.id}">ボット更新</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+    th:href="@{/resources/css/style.css}">
 </head>
 <body>
 
-	<h1 th:unless="${bot.id}">ボット新規登録</h1>
-	<h1 th:if="${bot.id}">ボット更新</h1>
+    <h1 th:unless="${botQa.id}">質問＆回答新規登録</h1>
+    <h1 th:if="${botQa.id}">質問＆回答更新</h1>
 
-	<!-- ナビゲーション -->
-	<a href="index.html" th:href="@{index}">ボット管理へ</a>
+    <!-- ナビゲーション -->
+    <a href="index.html" th:href="@{index}">チャットボット管理へ</a>
+    <a href="/chat/index.html" th:href="@{/chat/index}">チャットへ</a>
+    
 
-	<!-- 質問と回答 -->
-	<form method="post" action="index.html" th:action="@{complete}" th:object="${bot}">
-		<table border="1">
-			<tr>
-				<th th:if="*{id}">ID</th>
-				<th>質問</th>
-				<th>回答</th>
-			</tr>
-			<tr> 
-				<td th:if="*{id}" th:text="*{id}"></td>
-				<td><input type="text" th:field="*{question}" /></td>
-				<td><input type="text" th:field="*{answer}" /></td>
-			</tr>
-		</table>
-		
-		<input th:unless="*{id}" type="submit" name="insert" value="新規登録">
-		
-		<input th:if="*{id}" type="hidden" th:field="*{id}" />
-		<input th:if="*{id}" type="submit" name="update" value="登録">
-		<input th:if="*{id}" type="submit" name="delete" value="削除">
-	</form>
-	
+    <!-- 質問と回答 -->
+    <form method="post" action="index.html" th:action="@{complete}"
+        th:object="${botQa}">
+        <table border="1">
+            <tr>
+                <th th:if="*{id}">ID</th>
+                <th>質問</th>
+                <th>回答</th>
+            </tr>
+            <tr>
+                <td th:if="*{id}" th:text="*{id}"></td>
+                <td><input type="text" th:field="*{question}" /></td>
+                <td><input type="text" th:field="*{answer}" /></td>
+            </tr>
+        </table>
+
+        <input th:unless="*{id}" type="submit" name="insert"
+            value="新規登録"> <input th:if="*{id}" type="hidden"
+            th:field="*{id}" /> <input th:if="*{id}" type="submit"
+            name="update" value="登録"> <input th:if="*{id}"
+            type="submit" name="delete" value="削除">
+    </form>
+
 </body>
 </html>

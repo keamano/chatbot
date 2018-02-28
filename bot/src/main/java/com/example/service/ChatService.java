@@ -2,12 +2,11 @@ package com.example.service;
 
 import java.util.List;
 
-import com.example.entity.Chat;
+import com.example.entity.ChatQa;
 
 public interface ChatService {
 
-    List<Chat> findAll();
+    List<ChatQa> findAll();
 
-    void insert(Chat chat);
-    
+    void ask(String question);
 }
