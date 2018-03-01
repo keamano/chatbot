@@ -2,15 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title th:unless="${botQa.id}">ボット新規登録</title>
-<title th:if="${botQa.id}">ボット更新</title>
+<title th:unless="${botForm.id}">Spring Chat ボット新規登録</title>
+<title th:if="${botForm.id}">Spring Chat ボット更新</title>
 <link rel="stylesheet" href="../../../resources/css/style.css"
     th:href="@{/resources/css/style.css}">
 </head>
 <body>
+    <div class="boxContainer">
+        <!-- ロゴ -->
+        <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
+            <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
+        </a>
+        
+        <!-- ナビゲーション -->
+        <a href="../chat/index.html" th:href="@{/chat/index}"  class="box button1">チャット</a>
+        <a href="../bot/index.html" th:href="@{/bot/index}"  class="box button1">チャットボット管理</a>
+    </div>
 
-    <h1 th:unless="${botQa.id}">質問＆回答新規登録</h1>
-    <h1 th:if="${botQa.id}">質問＆回答更新</h1>
+    <h2 th:unless="${botForm.id}">質問＆回答新規登録</h2>
+    <h2 th:if="${botForm.id}">質問＆回答更新</h2>
 
     <!-- ナビゲーション -->
     <a href="index.html" th:href="@{index}">チャットボット管理へ</a>
@@ -18,8 +28,7 @@
     
 
     <!-- 質問と回答 -->
-    <form method="post" action="index.html" th:action="@{complete}"
-        th:object="${botQa}">
+    <form method="post" action="index.html" th:action="@{complete}" th:object="${botForm}">
         <table border="1">
             <tr>
                 <th th:if="*{id}">ID</th>
@@ -33,11 +42,13 @@
             </tr>
         </table>
 
-        <input th:unless="*{id}" type="submit" name="insert"
-            value="新規登録"> <input th:if="*{id}" type="hidden"
-            th:field="*{id}" /> <input th:if="*{id}" type="submit"
-            name="update" value="登録"> <input th:if="*{id}"
-            type="submit" name="delete" value="削除">
+        <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
+        <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" class="error">ダミーのエラーメッセージ</div>
+
+        <input th:unless="*{id}" type="submit" name="insert" value="新規登録">
+        <input th:if="*{id}" type="hidden" th:field="*{id}" />
+        <input th:if="*{id}" type="submit" name="update" value="登録">
+        <input th:if="*{id}" type="submit" name="delete" value="削除">
     </form>
 
 </body>

@@ -2,9 +2,11 @@ package com.example.web;
 
 import java.nio.charset.StandardCharsets;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -48,10 +50,23 @@ public class MvcConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
+    /**
+     * CSS等の静的コンテンツを利用するための設定を記述する。
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-        .addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+    }
+
+    /**
+     * application-messages.propertiesを利用するためのBeanを定義する。
+     */
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("application-messages");
+        messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
+        return messageSource;
     }
 
 }

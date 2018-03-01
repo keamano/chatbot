@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,8 @@ public class ChatController {
     public String index(Model model) {
         List<ChatQa> chatQaList = chatService.findAll();
         model.addAttribute("chatQaList", chatQaList);
+        model.addAttribute("chatForm", new ChatForm());
+
         return "chat/index";
     }
 
@@ -38,7 +42,14 @@ public class ChatController {
      * 回答取得後は一覧画面にリダイレクトする。
      */
     @PostMapping("/ask")
-    public String ask(ChatForm chatForm) {
+    public String ask(@Validated ChatForm chatForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            List<ChatQa> chatQaList = chatService.findAll();
+            model.addAttribute("chatQaList", chatQaList);
+
+            return "chat/index";
+        }
+
         chatService.ask(chatForm.getQuestion());
 
         return "redirect:index";

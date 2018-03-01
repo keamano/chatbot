@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class BotController {
     }
 
     /**
-     * 一覧画面に遷移する。
+     * ボット一覧画面に遷移する。
      */
     @GetMapping("/index")
     public String index(Model model) {
@@ -36,18 +38,20 @@ public class BotController {
     }
 
     /**
-     * 一覧画面に遷移する。
+     * ボット編集画面に遷移する。
      */
     @GetMapping("/edit")
     public String edit(@RequestParam(name = "id", required = false) Integer id, Model model) {
-        BotQa botQa;
-        if (id == null) {
-            botQa = new BotQa("", "");
-        } else {
-            botQa = botService.findById(id);
+        BotForm botForm = new BotForm();
+
+        if (id != null) {
+            BotQa botQa = botService.findById(id);
+            botForm.setId(id);
+            botForm.setQuestion(botQa.getQuestion());
+            botForm.setAnswer(botQa.getAnswer());
         }
 
-        model.addAttribute("botQa", botQa);
+        model.addAttribute("botForm", botForm);
 
         return "bot/edit";
     }
@@ -56,9 +60,14 @@ public class BotController {
      * 入力を受け取り、新規登録処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "insert")
-    public String insertCmplete(BotForm botForm) {
-        BotQa botQa = botForm.convertToEntity();
+    public String insertCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("botForm", botForm);
 
+            return "bot/edit";
+        }
+
+        BotQa botQa = botForm.convertToEntity();
         botService.insert(botQa);
 
         return "redirect:index";
@@ -68,9 +77,14 @@ public class BotController {
      * 入力を受け取り、更新処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "update")
-    public String updateCmplete(BotForm botForm) {
-        BotQa botQa = botForm.convertToEntity();
+    public String updateCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("botForm", botForm);
 
+            return "bot/edit";
+        }
+
+        BotQa botQa = botForm.convertToEntity();
         botService.update(botQa);
 
         return "redirect:index";
@@ -80,7 +94,7 @@ public class BotController {
      * 入力を受け取り、削除処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "delete")
-    public String deleteCmplete(BotForm botForm) {
+    public String deleteCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
         BotQa botQa = botForm.convertToEntity();
 
         botService.delete(botQa);

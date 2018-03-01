@@ -1,13 +1,21 @@
 package com.example.form;
 
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.example.entity.BotQa;
 
 public class BotForm {
 
     private Integer id;
 
+    @NotBlank
+    @Length(min = 1, max =20)
     private String question;
 
+    @NotBlank
+    @Length(min = 1, max =20)
     private String answer;
 
     public Integer getId() {
