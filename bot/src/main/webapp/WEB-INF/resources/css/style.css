@@ -64,7 +64,6 @@ body {
     position: relative; /*追記*/
     background-color: #D9F0FF; /*追記*/
 }
-/* ↓追記↓ */
 .chat-hukidashi:after {
     content: "";
     position: absolute;
