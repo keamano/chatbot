@@ -2,15 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>チャットボット管理</title>
+<title>Spring Chat ボット管理</title>
 <link rel="stylesheet" href="../../../resources/css/style.css"
     th:href="@{/resources/css/style.css}">
 </head>
 <body>
-    <h1>チャットボット管理</h1>
+    <div class="boxContainer">
+        <!-- ロゴ -->
+        <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
+            <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
+        </a>
+        
+        <!-- ナビゲーション -->
+        <a href="../chat/index.html" th:href="@{/chat/index}"  class="box button1">チャット</a>
+        <div class="box button_disabled">チャットボット管理</div>
+    </div>
 
-    <!-- ナビゲーション -->
-    <a href="/chat/index.html" th:href="@{/chat/index}">チャットへ</a>
+    <h2>チャットボット管理</h2>
 
     <!-- 質問と回答のリスト -->
     <table border="1">
