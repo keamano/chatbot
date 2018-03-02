@@ -30,7 +30,7 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void ask(String question) {
         BotQa botQa = botQaRepository.findByQuestion(question);
 
