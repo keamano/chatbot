@@ -3,11 +3,9 @@ package com.example.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import com.example.entity.BotQa;
 
-@Repository
+//@Repository
 public class BotQaRepositoryDummy implements BotQaRepository {
 
     private List<BotQa> botQaList = new ArrayList<BotQa>();

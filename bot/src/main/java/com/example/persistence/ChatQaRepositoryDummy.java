@@ -3,11 +3,9 @@ package com.example.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import com.example.entity.ChatQa;
 
-@Repository
+//@Repository
 public class ChatQaRepositoryDummy implements ChatQaRepository {
 
     private List<ChatQa> chatQaList = new ArrayList<ChatQa>();
