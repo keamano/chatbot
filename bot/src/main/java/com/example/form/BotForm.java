@@ -5,17 +5,19 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.entity.BotQa;
+import com.example.validation.Group1;
+import com.example.validation.Group2;
 
 public class BotForm {
 
     private Integer id;
 
-    @NotBlank
-    @Length(min = 1, max =20)
+    @NotBlank(groups = Group1.class)
+    @Length(min = 1, max =20, groups = Group2.class)
     private String question;
 
-    @NotBlank
-    @Length(min = 1, max =20)
+    @NotBlank(groups = Group1.class)
+    @Length(min = 1, max =20, groups = Group2.class)
     private String answer;
 
     public Integer getId() {

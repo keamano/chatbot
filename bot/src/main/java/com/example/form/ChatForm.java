@@ -6,11 +6,13 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.entity.ChatQa;
+import com.example.validation.Group1;
+import com.example.validation.Group2;
 
 public class ChatForm {
-
-    @NotBlank
-    @Length(min = 1, max =20)
+	
+    @NotBlank(groups = Group1.class)
+    @Length(min = 1, max =20, groups = Group2.class)
     private String question;
 
     private String answer;

@@ -18,10 +18,10 @@
         <div class="box button_disabled">チャットボット管理</div>
     </div>
 
-    <h2>チャットボット管理</h2>
+    <h1>チャットボット管理</h1>
 
     <!-- 質問と回答のリスト -->
-    <table border="1">
+    <table class="chat-table">
         <tr>
             <th>ID</th>
             <th>質問</th>
@@ -29,13 +29,12 @@
             <th>修正</th>
         </tr>
         <tr th:each="botQa : ${botQaList}" th:object="${botQa}">
-            <td th:text="*{id}"></td>
-            <td th:text="*{question}"></td>
-            <td th:text="*{answer}"></td>
-            <td><a href="edit.html" th:href="@{edit(id=*{id})}">修正</a></td>
+            <td th:text="*{id}" class="list-id"></td>
+            <td th:text="*{question}" class="list-q"></td>
+            <td th:text="*{answer}" class="list-a"></td>
+            <td><a href="edit.html" th:href="@{edit(id=*{id})}" class="square_btn">修正</a></td>
         </tr>
     </table>
-    <a href="edit.html" th:href="@{edit}">新規</a>
-
+   	<a href="edit.html" th:href="@{edit}" class="square_btn">新規</a>
 </body>
 </html>
