@@ -16,7 +16,8 @@
         <div  class="box button_disabled">チャット</div>
         <a href="../bot/index.html" th:href="@{/bot/index}"  class="box button1">チャットボット管理</a>
     </div>
-    <br><br>
+    
+    <h1>チャット</h1>
     
     <!-- チャットのリスト -->
     <div th:each="chatQa : ${chatQaList}" th:object="${chatQa}">
@@ -42,9 +43,9 @@
     
     <!-- 質問の送信 -->
     <form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
-        <input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。">
+        <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
         <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
-        <input type="submit" value="送信">
+        <input type="submit" value="送信" class="square_btn">
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>

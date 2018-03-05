@@ -19,31 +19,31 @@
         <a href="../bot/index.html" th:href="@{/bot/index}"  class="box button1">チャットボット管理</a>
     </div>
 
-    <h2 th:unless="${botForm.id}">質問＆回答新規登録</h2>
-    <h2 th:if="${botForm.id}">質問＆回答更新</h2>
+    <h1 th:unless="${botForm.id}">質問＆回答新規登録</h1>
+    <h1 th:if="${botForm.id}">質問＆回答更新</h1>
 
     <!-- 質問と回答 -->
     <form method="post" action="index.html" th:action="@{complete}" th:object="${botForm}">
-        <table border="1">
+        <table class="chat-table">
             <tr>
                 <th th:if="*{id}">ID</th>
                 <th>質問</th>
                 <th>回答</th>
             </tr>
             <tr>
-                <td th:if="*{id}" th:text="*{id}"></td>
-                <td><input type="text" th:field="*{question}" /></td>
-                <td><input type="text" th:field="*{answer}" /></td>
+                <td class="list-id" th:if="*{id}" th:text="*{id}"></td>
+                <td class="list-q"><input type="text" th:field="*{question}" class="chat-input" /></td>
+                <td class="list-q"><input type="text" th:field="*{answer}" class="chat-input" /></td>
             </tr>
         </table>
 
         <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
         <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" class="error">ダミーのエラーメッセージ</div>
 
-        <input th:unless="*{id}" type="submit" name="insert" value="新規登録">
+        <input th:unless="*{id}" type="submit" name="insert" value="新規登録" class="square_btn">
         <input th:if="*{id}" type="hidden" th:field="*{id}" />
-        <input th:if="*{id}" type="submit" name="update" value="登録">
-        <input th:if="*{id}" type="submit" name="delete" value="削除">
+        <input th:if="*{id}" type="submit" name="update" value="登録" class="square_btn">
+        <input th:if="*{id}" type="submit" name="delete" value="削除" class="square_btn">
     </form>
 
 </body>

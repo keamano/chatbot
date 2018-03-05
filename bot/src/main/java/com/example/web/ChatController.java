@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.entity.ChatQa;
 import com.example.form.ChatForm;
 import com.example.service.ChatService;
+import com.example.validation.MyGroupSequence;
 
 @Controller
 @RequestMapping("/chat")
@@ -42,7 +43,7 @@ public class ChatController {
      * 回答取得後は一覧画面にリダイレクトする。
      */
     @PostMapping("/ask")
-    public String ask(@Validated ChatForm chatForm, BindingResult bindingResult, Model model) {
+    public String ask(@Validated(MyGroupSequence.class) ChatForm chatForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             List<ChatQa> chatQaList = chatService.findAll();
             model.addAttribute("chatQaList", chatQaList);

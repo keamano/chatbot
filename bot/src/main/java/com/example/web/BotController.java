@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.entity.BotQa;
 import com.example.form.BotForm;
 import com.example.service.BotService;
+import com.example.validation.MyGroupSequence;
 
 @Controller
 @RequestMapping("/bot")
@@ -60,7 +61,7 @@ public class BotController {
      * 入力を受け取り、新規登録処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "insert")
-    public String insertCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
+    public String insertCmplete(@Validated(MyGroupSequence.class) BotForm botForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("botForm", botForm);
 
@@ -77,7 +78,7 @@ public class BotController {
      * 入力を受け取り、更新処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "update")
-    public String updateCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
+    public String updateCmplete(@Validated(MyGroupSequence.class) BotForm botForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("botForm", botForm);
 
@@ -94,7 +95,7 @@ public class BotController {
      * 入力を受け取り、削除処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "delete")
-    public String deleteCmplete(@Validated BotForm botForm, BindingResult bindingResult, Model model) {
+    public String deleteCmplete(@Validated(MyGroupSequence.class) BotForm botForm, BindingResult bindingResult, Model model) {
         BotQa botQa = botForm.convertToEntity();
 
         botService.delete(botQa);

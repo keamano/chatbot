@@ -19,7 +19,7 @@ body {
     padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 3px;
     
 }
 
@@ -31,7 +31,51 @@ body {
     padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 3px;
+}
+
+/** 共通部品  */
+.error {
+	color : red;
+}
+
+.chat-input {
+	border:0;
+	padding:10px;
+	font-family:Arial, sans-serif;
+	font-size:15px;
+	border:solid 1px #ccc;
+	margin:0 0 10px;
+	width:500px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;	
+}
+
+.square_btn{
+    display: inline-block;
+    padding: 5px 20px;
+    margin:10px 0;
+    text-decoration: none;
+    background: #5FB404;
+    color: #FFF;
+    border-bottom: solid 4px #21610B;
+    border-radius: 3px;
+}
+
+.square_btn:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+}
+
+h1 {
+	color: #5FB404;
+	padding: 10px;
+	border-top: solid 3px #5FB404;
+	border-bottom: solid 3px #5FB404;
+	font-size: 20px;
 }
 
 /* チャット画面 */
@@ -81,4 +125,46 @@ body {
 }
 .someone:after {
     border-color: transparent #BCF5A9 transparent transparent;
+}
+
+
+/** テーブル */
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+}
+
+table.chat-table {
+	margin:10px 0;
+}
+
+table.chat-table th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #5FB404;
+  color: #ffffff;
+}
+
+table.chat-table td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+table.chat-table td.list-q, td.list-a {
+	width: 350px;
+}
+
+table.chat-table td.list-id {
+	font-weight: bold; 
+}
+
+table.chat-table tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+table.chat-table tr:nth-child(even) {
+  background: #BCF5A9;
 }
