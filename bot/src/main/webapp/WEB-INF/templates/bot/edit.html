@@ -40,9 +40,9 @@
         <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
         <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" class="error">ダミーのエラーメッセージ</div>
 
-        <input th:unless="*{id}" type="submit" name="insert" value="新規登録" class="square_btn">
+        <input th:unless="*{id}" type="submit" name="insert" value="登録" class="square_btn">
         <input th:if="*{id}" type="hidden" th:field="*{id}" />
-        <input th:if="*{id}" type="submit" name="update" value="登録" class="square_btn">
+        <input th:if="*{id}" type="submit" name="update" value="更新" class="square_btn">
         <input th:if="*{id}" type="submit" name="delete" value="削除" class="square_btn">
     </form>
 
