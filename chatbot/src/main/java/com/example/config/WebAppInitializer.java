@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import com.example.persistence.PersistenceConfig;
 import com.example.service.ServiceConfig;
 import com.example.web.MvcConfig;
-
+// (1)AbstractAnnotationConfigDispatcherServletInitializer
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -29,6 +29,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Filter[] getServletFilters() {
+    	// (2) CharacterEncodingFilter
         return new Filter[]{new CharacterEncodingFilter(StandardCharsets.UTF_8.name(), true)};
     }
 }

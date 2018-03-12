@@ -12,8 +12,8 @@ public class BotForm {
 
     private Integer id;
 
-    @NotBlank(groups = Group1.class)
-    @Length(min = 1, max =20, groups = Group2.class)
+    @NotBlank(groups = Group1.class) // (1)@NotBkank
+    @Length(min = 1, max =20, groups = Group2.class) // (2)Length
     private String question;
 
     @NotBlank(groups = Group1.class)

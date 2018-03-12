@@ -11,8 +11,6 @@ import com.example.validation.Group2;
 
 public class ChatForm {
 	
-    @NotBlank(groups = Group1.class)
-    @Length(min = 1, max =20, groups = Group2.class)
     private String question;
 
     private String answer;

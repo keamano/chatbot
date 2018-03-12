@@ -29,13 +29,12 @@ public class ChatController {
     /**
      * 一覧画面に遷移する。
      */
-    @GetMapping("/index")
     public String index(Model model) {
         List<ChatQa> chatQaList = chatService.findAll();
         model.addAttribute("chatQaList", chatQaList);
         model.addAttribute("chatForm", new ChatForm());
 
-        return "chat/index";
+        return "";
     }
 
     /**
@@ -43,14 +42,7 @@ public class ChatController {
      * 回答取得後は一覧画面にリダイレクトする。
      */
     @PostMapping("/ask")
-    public String ask(@Validated(MyGroupSequence.class) ChatForm chatForm, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            List<ChatQa> chatQaList = chatService.findAll();
-            model.addAttribute("chatQaList", chatQaList);
-
-            return "chat/index";
-        }
-
+    public String ask(ChatForm chatForm, Model model) {
         chatService.ask(chatForm.getQuestion());
 
         return "redirect:index";

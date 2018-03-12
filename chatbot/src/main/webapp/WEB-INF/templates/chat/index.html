@@ -20,7 +20,7 @@
     <h1>チャット</h1>
     
     <!-- チャットのリスト -->
-    <div th:each="chatQa : ${chatQaList}" th:object="${chatQa}">
+    <div>
         <!-- 質問 -->
         <div class="chat-box">
             <div class="chat-face">
@@ -46,7 +46,7 @@
     <!-- 質問の送信 -->
     <form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
         <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
-        <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
+        <div class="error">ダミーのエラーメッセージ</div>
         <input type="submit" value="送信" class="square_btn">
     </form>
 

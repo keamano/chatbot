@@ -3,11 +3,16 @@ package com.example.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-public class RootController {
+@Controller // (1)@Controller
+public class RootController { 
 
-    @GetMapping("/")
+    @GetMapping("/") // (2)@GetMapping
     public String root() {
-        return "redirect:/chat/index";
+    	return "redirect:index";
+    }
+    
+    @GetMapping("/index") // (2)@GetMapping
+    public String index() {
+    	return "index";
     }
 }

@@ -17,7 +17,7 @@ import com.example.service.BotService;
 import com.example.validation.MyGroupSequence;
 
 @Controller
-@RequestMapping("/bot")
+@RequestMapping("/bot") // (1)RequestMapping
 public class BotController {
 
     private final BotService botService;
@@ -31,6 +31,7 @@ public class BotController {
      * ボット一覧画面に遷移する。
      */
     @GetMapping("/index")
+    // (2)Model
     public String index(Model model) {
         List<BotQa> botQaList = botService.findAll();
         model.addAttribute("botQaList", botQaList);
@@ -42,6 +43,7 @@ public class BotController {
      * ボット編集画面に遷移する。
      */
     @GetMapping("/edit")
+    // (3)RequestParam
     public String edit(@RequestParam(name = "id", required = false) Integer id, Model model) {
         BotForm botForm = new BotForm();
 
@@ -61,6 +63,7 @@ public class BotController {
      * 入力を受け取り、新規登録処理を実行する。 処理完了後は、一覧画面にリダイレクトする。
      */
     @PostMapping(value = "/complete", params = "insert")
+    // (2)@Validated
     public String insertCmplete(@Validated(MyGroupSequence.class) BotForm botForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("botForm", botForm);

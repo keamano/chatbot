@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Spring Chat ボット管理</title>
+<!-- (1)th:href -->
 <link rel="stylesheet" href="../../../resources/css/style.css"
     th:href="@{/resources/css/style.css}">
 </head>
@@ -10,6 +11,7 @@
     <div class="boxContainer">
         <!-- ロゴ -->
         <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
+            <!-- (2)th:attr -->
             <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
         </a>
         
@@ -28,6 +30,7 @@
             <th>回答</th>
             <th>修正</th>
         </tr>
+        <!-- (3)th:each, (4)th:object -->
         <tr th:each="botQa : ${botQaList}" th:object="${botQa}">
             <td th:text="*{id}" class="list-id"></td>
             <td th:text="*{question}" class="list-q"></td>

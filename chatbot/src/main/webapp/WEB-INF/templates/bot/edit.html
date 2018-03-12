@@ -26,17 +26,20 @@
     <form method="post" action="index.html" th:action="@{complete}" th:object="${botForm}">
         <table class="chat-table">
             <tr>
+                <!-- (1)th:if -->
                 <th th:if="*{id}">ID</th>
                 <th>質問</th>
                 <th>回答</th>
             </tr>
             <tr>
                 <td class="list-id" th:if="*{id}" th:text="*{id}"></td>
+                <!-- (2)th:field -->
                 <td class="list-q"><input type="text" th:field="*{question}" class="chat-input" /></td>
                 <td class="list-q"><input type="text" th:field="*{answer}" class="chat-input" /></td>
             </tr>
         </table>
 
+        <!-- (3)#fields, (4)hasErrors(), (5)th:errors -->
         <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
         <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" class="error">ダミーのエラーメッセージ</div>
 
