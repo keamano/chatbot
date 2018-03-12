@@ -67,13 +67,11 @@ ALTER TABLE bot_qa OWNER TO edu;
 
 BEGIN;
 
-INSERT INTO chat_qa VALUES(nextval('seq_chat_qa_id'), 'こんにちは', 'はじめまして');
-INSERT INTO chat_qa VALUES(nextval('seq_chat_qa_id'), 'あなたはだれですか？', 'わたしはボットです');
-INSERT INTO chat_qa VALUES(nextval('seq_chat_qa_id'), '今日の天気は？', '快晴です');
+INSERT INTO chat_qa VALUES(nextval('seq_chat_qa_id'), 'Hello!', 'Hi.');
 
-INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), 'こんにちは', 'はじめまして');
-INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), 'だれですか', 'わたしはボットです');
-INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), '天気は', '快晴です');
+INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), 'Hello', 'How are you?');
+INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), 'Who are you?', 'I am bot.');
+INSERT INTO bot_qa VALUES(nextval('seq_bot_qa_id'), 'How is the weather today?', 'It is clear today.');
 
 COMMIT;
 
