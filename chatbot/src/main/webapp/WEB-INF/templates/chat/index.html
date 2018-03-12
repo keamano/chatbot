@@ -20,14 +20,14 @@
     <h1>チャット</h1>
     
     <!-- チャットのリスト -->
-    <div>
+    <div><!-- 【TODO】th:each属性, th:object属性を書きましょう -->
         <!-- 質問 -->
         <div class="chat-box">
             <div class="chat-face">
                 <img src="../../../resources/image/panda.jpg"  alt="自分" th:attr="src=@{/resources/image/panda.jpg},title=#{自分},alt=#{自分}">
             </div>
             <div class="chat-area">
-                <div th:text="*{question}" class="chat-hukidashi">ダミーの質問</div>
+                <div class="chat-hukidashi">ダミーの質問</div><!-- 【TODO】th:text属性を書きましょう -->
                 <p class="chat-who-is chat-you">YOU</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <img src="../../../resources/image/kopanda.jpg"  alt="相手" th:attr="src=@{/resources/image/kopanda.jpg},title=#{相手},alt=#{相手}">
             </div>
             <div class="chat-area">
-                <div th:text="*{answer}" class="chat-hukidashi someone">ダミーの回答</div>
+                <div class="chat-hukidashi someone">ダミーの回答</div><!-- 【TODO】th:text属性を書きましょう -->
                 <p class="chat-who-is chat-opponent">BOT</p>
             </div>
         </div>
@@ -46,7 +46,7 @@
     <!-- 質問の送信 -->
     <form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
         <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
-        <div class="error">ダミーのエラーメッセージ</div>
+        <div class="error"></div>
         <input type="submit" value="送信" class="square_btn">
     </form>
 
