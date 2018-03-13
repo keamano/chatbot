@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Spring Chat チャット</title>
-<link rel="stylesheet" href="../../../resources/css/style.css" th:href="@{/resources/css/style.css}">
+<link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}">
 </head>
 <body>
     <div class="boxContainer">
         <!-- ロゴ -->
         <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
-            <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
+            <img src="../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
         </a>
         
         <!-- ナビゲーション -->
@@ -24,7 +24,7 @@
         <!-- 質問 -->
         <div class="chat-box">
             <div class="chat-face">
-                <img src="../../../resources/image/panda.jpg"  alt="自分" th:attr="src=@{/resources/image/panda.jpg},title=#{自分},alt=#{自分}">
+                <img src="../../resources/image/panda.jpg"  alt="自分" th:attr="src=@{/resources/image/panda.jpg},title=#{自分},alt=#{自分}">
             </div>
             <div class="chat-area">
                 <div class="chat-hukidashi">ダミーの質問</div><!-- 【TODO】th:text属性を書きましょう -->
@@ -34,7 +34,7 @@
         <!-- 回答-->
         <div class="chat-box">
             <div class="chat-face">
-                <img src="../../../resources/image/kopanda.jpg"  alt="相手" th:attr="src=@{/resources/image/kopanda.jpg},title=#{相手},alt=#{相手}">
+                <img src="../../resources/image/kopanda.jpg"  alt="相手" th:attr="src=@{/resources/image/kopanda.jpg},title=#{相手},alt=#{相手}">
             </div>
             <div class="chat-area">
                 <div class="chat-hukidashi someone">ダミーの回答</div><!-- 【TODO】th:text属性を書きましょう -->
@@ -46,7 +46,7 @@
     <!-- 質問の送信 -->
     <form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
         <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
-        <div class="error"></div><!-- 【TODO】エラーメッセージを表示するため、th:if, th:errors を書いてみましょう -->
+        <div class="error">ダミーのエラーメッセージ</div><!-- 【TODO】エラーメッセージを表示するため、th:if, th:errors を書いてみましょう -->
         <input type="submit" value="送信" class="square_btn">
     </form>
 
