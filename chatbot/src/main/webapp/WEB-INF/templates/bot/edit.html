@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <title th:unless="${botForm.id}">Spring Chat ボット新規登録</title>
 <title th:if="${botForm.id}">Spring Chat ボット更新</title>
-<link rel="stylesheet" href="../../../resources/css/style.css"
+<link rel="stylesheet" href="../../resources/css/style.css"
     th:href="@{/resources/css/style.css}">
 </head>
 <body>
     <div class="boxContainer">
         <!-- ロゴ -->
         <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
-            <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
+            <img src="../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
         </a>
         
         <!-- ナビゲーション -->
@@ -31,9 +31,9 @@
                 <th>回答</th>
             </tr>
             <tr>
-                <td class="list-id" th:if="*{id}" th:text="*{id}"></td>
-                <td class="list-q"><input type="text" th:field="*{question}" class="chat-input" /></td>
-                <td class="list-q"><input type="text" th:field="*{answer}" class="chat-input" /></td>
+                <td class="list-id" th:if="*{id}" th:text="*{id}">001</td>
+                <td class="list-q"><input type="text" value="こんにちは" th:field="*{question}" class="chat-input" /></td>
+                <td class="list-q"><input type="text" value="こんにちは、ボットです！" th:field="*{answer}" class="chat-input" /></td>
             </tr>
         </table>
 
