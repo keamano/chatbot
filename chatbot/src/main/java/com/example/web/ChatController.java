@@ -42,7 +42,16 @@ public class ChatController {
      * 回答取得後は一覧画面にリダイレクトする。
      */
     @PostMapping("/ask")
-    public String ask(ChatForm chatForm, Model model) {
+    public String ask(ChatForm chatForm, // 【TODO】 ChatFormを検証するため、@Validated のアノテーションを付与しましょう
+	    BindingResult bindingResult,
+	    Model model
+    ) {
+        if (bindingResult.hasErrors()) {
+            List<ChatQa> chatQaList = chatService.findAll();
+            model.addAttribute("chatQaList", chatQaList);
+        	return "chat/index";
+        }
+
         chatService.ask(chatForm.getQuestion());
 
         return "redirect:index";

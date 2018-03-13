@@ -11,6 +11,7 @@ import com.example.validation.Group2;
 
 public class ChatForm {
 	
+	// 【TODO】検証用のアノテーションを追加しましょう
     private String question;
 
     private String answer;
