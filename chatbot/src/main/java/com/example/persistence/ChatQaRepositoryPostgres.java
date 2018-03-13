@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.ChatQa;
 
-@Repository
+// TODO : コンポーネントスキャンの対象にするためのアノテーションを記載
 public class ChatQaRepositoryPostgres implements ChatQaRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;

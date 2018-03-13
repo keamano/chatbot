@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>こんにちは</title>
+<meta charset="UTF-8">
+<title>こんにちは</title>
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
 </head>
 <body>
 	こんにちは
+	<br>
+
+	<div th:if="${chatQaList}">
+		<h1>チャットのデータ一覧</h1>
+		<table class="chat-table">
+			<tr>
+				<th>ID</th>
+				<th>質問</th>
+				<th>回答</th>
+			</tr>
+			<tr th:each="chatQa : ${chatQaList}" th:object="${chatQa}">
+				<td th:text="*{id}" class="list-id"></td>
+				<td th:text="*{question}" class="list-q"></td>
+				<td th:text="*{answer}" class="list-a"></td>
+			</tr>
+		</table>
+	</div>
+
 </body>
 </html>
