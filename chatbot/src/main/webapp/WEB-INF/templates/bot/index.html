@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Spring Chat ボット管理</title>
-<link rel="stylesheet" href="../../../resources/css/style.css"
+<link rel="stylesheet" href="../../resources/css/style.css"
     th:href="@{/resources/css/style.css}">
 </head>
 <body>
     <div class="boxContainer">
         <!-- ロゴ -->
         <a href="../chat/index.html" th:href="@{/chat/index}"  class="box">
-            <img src="../../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
+            <img src="../../resources/image/logo.png" alt="ロゴ" th:attr="src=@{/resources/image/logo.png},title=#{ロゴ},alt=#{ロゴ}" width="250">
         </a>
         
         <!-- ナビゲーション -->
@@ -29,9 +29,9 @@
             <th>修正</th>
         </tr>
         <tr th:each="botQa : ${botQaList}" th:object="${botQa}">
-            <td th:text="*{id}" class="list-id"></td>
-            <td th:text="*{question}" class="list-q"></td>
-            <td th:text="*{answer}" class="list-a"></td>
+            <td th:text="*{id}" class="list-id">001</td>
+            <td th:text="*{question}" class="list-q">こんにちは</td>
+            <td th:text="*{answer}" class="list-a">こんにちは、ボットです！</td>
             <td><a href="edit.html" th:href="@{edit(id=*{id})}" class="square_btn">修正</a></td>
         </tr>
     </table>
