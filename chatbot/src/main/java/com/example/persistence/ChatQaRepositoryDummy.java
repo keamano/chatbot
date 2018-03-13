@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entity.ChatQa;
 
-//TODO : コンポーネントスキャンから対象外にする
+// TODO : コンポーネントスキャンから対象外にする
 @Repository
 public class ChatQaRepositoryDummy implements ChatQaRepository {
 
