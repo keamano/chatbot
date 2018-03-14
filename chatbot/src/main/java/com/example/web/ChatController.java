@@ -29,12 +29,13 @@ public class ChatController {
     /**
      * 一覧画面に遷移する。
      */
+    // TODO "/chat/index"のURLでアクセスできるように指定する
     public String index(Model model) {
         List<ChatQa> chatQaList = chatService.findAll();
         model.addAttribute("chatQaList", chatQaList);
         model.addAttribute("chatForm", new ChatForm());
 
-        return "";
+        return ""; // TODO "/chat/index"のhtmlが表示されるように指定する
     }
 
     /**
