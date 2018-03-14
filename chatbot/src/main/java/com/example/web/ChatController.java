@@ -29,7 +29,7 @@ public class ChatController {
     /**
      * チャット画面に遷移する。
      */
-    // TODO "/chat/index"のURLでアクセスできるように指定する
+    @GetMapping("/index") 
     public String index(Model model) {
         List<ChatQa> chatQaList = chatService.findAll();
         model.addAttribute("chatQaList", chatQaList);
