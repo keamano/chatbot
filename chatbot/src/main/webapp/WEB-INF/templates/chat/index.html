@@ -20,14 +20,14 @@
     <h1>チャット</h1>
     
     <!-- チャットのリスト -->
-    <div><!-- 【TODO】th:each属性, th:object属性を書きましょう -->
+　　　　<div th:each="chatQa : ${chatQaList}" th:object="${chatQa}">
         <!-- 質問 -->
         <div class="chat-box">
             <div class="chat-face">
                 <img src="../../resources/image/panda.jpg"  alt="自分" th:attr="src=@{/resources/image/panda.jpg},title=#{自分},alt=#{自分}">
             </div>
             <div class="chat-area">
-                <div class="chat-hukidashi">ダミーの質問</div><!-- 【TODO】th:text属性を書きましょう -->
+            <div th:text="*{question}" class="chat-hukidashi">ダミーの質問</div>
                 <p class="chat-who-is chat-you">YOU</p>
             </div>
         </div>
@@ -43,12 +43,12 @@
         </div>
     </div>
     
-    <!-- 質問の送信 -->
-    <form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
-        <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
-        <div class="error">ダミーのエラーメッセージ</div><!-- 【TODO】エラーメッセージを表示するため、th:if, th:errors を書いてみましょう -->
-        <input type="submit" value="送信" class="square_btn">
-    </form>
+<!-- 質問の送信 -->
+<form method="POST" action="index.html" th:action="@{ask}" th:object="${chatForm}">
+    <div><input type="text" id="question" name="question" th:field="*{question}" placeholder="質問を入力してください。" class="chat-input"></div>
+    <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" class="error">ダミーのエラーメッセージ</div>
+    <input type="submit" value="送信" class="square_btn">
+</form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
     <script>

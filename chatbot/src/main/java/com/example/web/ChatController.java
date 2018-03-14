@@ -27,7 +27,7 @@ public class ChatController {
     }
 
     /**
-     * 一覧画面に遷移する。
+     * チャット画面に遷移する。
      */
     // TODO "/chat/index"のURLでアクセスできるように指定する
     public String index(Model model) {
@@ -35,7 +35,7 @@ public class ChatController {
         model.addAttribute("chatQaList", chatQaList);
         model.addAttribute("chatForm", new ChatForm());
 
-        return ""; // TODO "/chat/index"のhtmlが表示されるように指定する
+        return "chat/index";
     }
 
     /**
