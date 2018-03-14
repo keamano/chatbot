@@ -43,7 +43,7 @@ public class ChatController {
      * 回答取得後は一覧画面にリダイレクトする。
      */
     @PostMapping("/ask")
-    public String ask(ChatForm chatForm, // TODO ChatFormを検証するため、@Validated のアノテーションを付与しましょう
+    public String ask(@Validated ChatForm chatForm,
 	    BindingResult bindingResult,
 	    Model model
     ) {

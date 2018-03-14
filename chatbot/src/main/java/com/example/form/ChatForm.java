@@ -11,8 +11,8 @@ import com.example.validation.Group2;
 
 public class ChatForm {
 	
-	// TODO 必須入力チェック用のアノテーションを追加しましょう
-	// TODO 文字列の長さチェック用のアノテーションを追加しましょう
+    @NotBlank
+    @Length(min = 1, max =20)
     private String question;
 
     private String answer;
