@@ -14,8 +14,10 @@ public class RootController {
 
 	private ChatService chatService;
 
-	// TODO : ChatServiceをDIするためのコンストラクタを記載する
-
+	public RootController(ChatService chatService) {
+		this.chatService = chatService;
+	}
+	
 	@GetMapping("/") // (2)@GetMapping
 	public String root() {
 		return "redirect:index"; // TODO [時間の余った人向け]リダイレクト先を"chat/index"に変更する
