@@ -10,9 +10,9 @@ import com.example.validation.Group1;
 import com.example.validation.Group2;
 
 public class ChatForm {
-	
-	// TODO �K�{���̓`�F�b�N�p�̃A�m�e�[�V������ǉ����܂��傤
-	// TODO ������̒����`�F�b�N�p�̃A�m�e�[�V������ǉ����܂��傤
+    
+    // TODO 必須入力チェック用のアノテーションを追加しましょう
+    // TODO 文字列の長さチェック用のアノテーションを追加しましょう
     private String question;
 
     private String answer;
