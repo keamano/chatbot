@@ -18,7 +18,7 @@ public class RootController {
 
 	@GetMapping("/") // (2)@GetMapping
 	public String root() {
-		return "redirect:index";
+		return "redirect:index"; // TODO[時間の余った人向け]リダイレクト先を"chat/index"に変更する
 	}
 
 	@GetMapping("/index") // (2)@GetMapping
